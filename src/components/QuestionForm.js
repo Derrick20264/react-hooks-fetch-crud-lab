@@ -26,10 +26,10 @@ function QuestionForm({ onAddQuestion }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(newQuestion),
     })
-      .then((res) => res.json())
-      .then((newQuestion) => onAddQuestion(newQuestion));
+      .then((r) => r.json())
+        .then((data) => onAddQuestion(data));
        onAddQuestion(newQuestion);
   }
 

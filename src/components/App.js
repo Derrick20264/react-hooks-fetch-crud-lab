@@ -18,7 +18,7 @@ const [questions, setQuestions] = useState([]);
 
   // Add question (POST)
  function handleAddQuestion(newQuestion) {
-  setQuestions(prevQuestions => [...prevQuestions, newQuestion]); // ✅ updates the state
+  setQuestions(prevQuestions => [...questions, newQuestion]); // ✅ updates the state
 }
  
 
