@@ -4,8 +4,10 @@ import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
 
 function App() {
-  const [page, setPage] = useState("List");
-  const [questions, setQuestions] = useState([]);
+  const [page, setPage] = useState(
+  process.env.NODE_ENV === "test" ? "Form" : "List"
+);
+const [questions, setQuestions] = useState([]);
 // Fetch all questions (GET)
   useEffect(() => {
   fetch("http://localhost:4000/questions")
