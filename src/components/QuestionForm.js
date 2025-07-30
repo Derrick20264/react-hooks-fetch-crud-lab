@@ -59,10 +59,11 @@ function QuestionForm({ onAddQuestion }) {
         <label>
           Correct Answer:
           <select name="correctIndex" value={formData.correctIndex} onChange={handleChange}>
-            <option value="0">Answer 1</option>
-            <option value="1">Answer 2</option>
-            <option value="2">Answer 3</option>
-            <option value="3">Answer 4</option>
+            {formData.answers.map((answer, index) => (
+              <option key={index} value={index}>
+                {`Answer ${index + 1}`}
+              </option>
+            ))}
           </select>
         </label>
         <button type="submit">Submit Question</button>
