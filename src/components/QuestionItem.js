@@ -7,18 +7,20 @@ function QuestionItem({ question, onDeleteQuestion, onUpdateQuestion }) {
   }).then(() => onDeleteQuestion(id));
 }
 
-function handleCorrectAnswerChange(e) {
-  const newIndex = parseInt(e.target.value, 10);
-  fetch(`http://localhost:4000/questions/${id}`, {
+function handleSelectChange(e) {
+  const updatedIndex = parseInt(e.target.value);
+
+  fetch(`http://localhost:4000/questions/${question.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ correctIndex: newIndex }),
+    body: JSON.stringify({ correctIndex: updatedIndex }),
   })
     .then((r) => r.json())
     .then((updatedQuestion) => onUpdateQuestion(updatedQuestion));
 }
+
 
 
   return (
@@ -26,13 +28,17 @@ function handleCorrectAnswerChange(e) {
       <h4>{prompt}</h4>
       <label>
         Correct Answer:
-        <select value={correctIndex} onChange={handleCorrectAnswerChange}>
-          {answers.map((answer, index) => (
-            <option key={index} value={index}>
-              {answer}
-            </option>
-          ))}
-        </select>
+        <select
+  value={question.correctIndex}
+  onChange={handleSelectChange}
+>
+  {question.answers.map((answer, index) => (
+    <option key={index} value={index}>
+      {answer}
+    </option>
+  ))}
+</select>
+
       </label>
       <button onClick={handleDeleteClick}>Delete Question</button>
     </li>
