@@ -8,10 +8,14 @@ function App() {
   const [questions, setQuestions] = useState([]);
 // Fetch all questions (GET)
   useEffect(() => {
-    fetch("http://localhost:4000/questions")
-      .then((r) => r.json())
-      .then((data) => setQuestions(data));
-  }, []);
+  fetch("http://localhost:4000/questions")
+    .then((res) => {
+      if (!res.ok) throw new Error("Server error");
+      return res.json();
+    })
+    .then((data) => setQuestions(data))
+    .catch((err) => console.error("Fetch error:", err));
+}, []);
 
   // Add question (POST)
   function handleAddQuestion(newQuestion) {
