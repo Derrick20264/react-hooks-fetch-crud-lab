@@ -24,17 +24,26 @@ function App() {
     setQuestions(updatedQuestions);
   }
 
-  // Update correctIndex (PATCH)
+ // Update correctIndex (PATCH)
   function handleUpdateQuestion(updatedQuestion) {
     const updatedQuestions = questions.map((q) =>
       q.id === updatedQuestion.id ? updatedQuestion : q
     );
     setQuestions(updatedQuestions);
   }
+
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm /> : <QuestionList />}
+      {page === "Form" ? (
+        <QuestionForm onAddQuestion={handleAddQuestion} />
+      ) : (
+        <QuestionList
+          questions={questions}
+          onDeleteQuestion={handleDeleteQuestion}
+          onUpdateQuestion={handleUpdateQuestion}
+        />
+      )}
     </main>
   );
 }
