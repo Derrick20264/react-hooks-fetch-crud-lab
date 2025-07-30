@@ -1,6 +1,12 @@
 {
   "questions": [
     {
+      "id": 0,
+      "prompt": "lorem testum 1",
+      "answers": ["one", "two", "three", "four"],
+      "correctIndex": 2
+    },
+    {
       "id": 1,
       "prompt": "What special prop should always be included for lists of elements?",
       "answers": ["id", "name", "key", "prop"],
@@ -38,3 +44,4 @@
     }
   ]
 }
+
