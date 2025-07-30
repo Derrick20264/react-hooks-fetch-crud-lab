@@ -30,6 +30,7 @@ function QuestionForm({ onAddQuestion }) {
     })
       .then((res) => res.json())
       .then((newQuestion) => onAddQuestion(newQuestion));
+       onAddQuestion(newQuestion);
   }
 
   return (

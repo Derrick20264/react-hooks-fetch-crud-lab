@@ -17,9 +17,10 @@ const [questions, setQuestions] = useState([]);
 
 
   // Add question (POST)
-  function handleAddQuestion(newQuestion) {
-    setQuestions([...questions, newQuestion]);
-  }
+ function handleAddQuestion(newQuestion) {
+  setQuestions(prevQuestions => [...prevQuestions, newQuestion]); // ✅ updates the state
+}
+ 
 
   // Delete question (DELETE)
   function handleDeleteQuestion(id) {
